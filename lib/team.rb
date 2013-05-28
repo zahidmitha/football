@@ -1,6 +1,6 @@
 require 'shoot'
 require 'tackle'
-require 'football'
+require 'player'
 
 class Team
 
@@ -10,7 +10,11 @@ class Team
   end
 
   def add(player)
-     @players << player
+     if @players.count <= 4
+      @players << player
+     else
+      puts "The team is full"
+    end
   end
 
   def view_team
@@ -32,9 +36,9 @@ class Team
 
 end
 
-t = Team.new
-t.add(Player.new("Zahid", "UK"))
-print t.view_team
+# t = Team.new
+# t.add(Player.new("Zahid", "UK"))
+# print t.view_team
 
 # (("Zahid", "UK"), ("Torres", "UK"), ("James", "Romania"), ("Zahid", "Mother Russia"))
 

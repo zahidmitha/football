@@ -1,6 +1,6 @@
 require 'shoot'
 require 'tackle'
-require 'football'
+require 'player'
 
 class Attacker < Player
 

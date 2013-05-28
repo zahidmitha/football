@@ -1,6 +1,6 @@
-require '/shoot'
-require '/tackle'
-require '/football'
+require 'shoot'
+require 'tackle'
+require 'player'
 
 class Midfielder < Player
 
