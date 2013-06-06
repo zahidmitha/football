@@ -30,6 +30,8 @@ class Team
     if @truths.count >= foreign_number
       # { |p| p.foreign?(@team_nationality) }
       raise "error"
+    else
+      true
     end
   end
 

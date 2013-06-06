@@ -43,14 +43,13 @@ describe "Attacker" do
     team = Team.new("French")
     p1 = Attacker.new("Tom", "French")
     p2 = Attacker.new("Tom", "Italian")
-    p3 = Attacker.new("Tom", "Italian")
+    p3 = Defender.new("Tom", "Italian")
     p4 = Attacker.new("Tom", "Italian")
     team.add(p1)
     team.add(p2)
     team.add(p3)
     team.add(p4)
-    team.check_fifa_rules()
-
+    team.check_fifa_rules(4).should eq true
   end
 
 
