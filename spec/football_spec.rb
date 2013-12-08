@@ -5,6 +5,7 @@ require './lib/attacker'
 require './lib/tackle'
 require './lib/shoot'
 require './lib/team'
+require './lib/team_factory'
 require 'spec_helper'
 
 describe "Player" do
@@ -39,6 +40,10 @@ describe "Attacker" do
      attacker.shoot
   end
 
+end
+
+  describe "Team" do
+
   it 'has a limited number of foreign players' do
     team = Team.new("French")
     p1 = Attacker.new("Tom", "French")
@@ -49,7 +54,34 @@ describe "Attacker" do
     team.add(p2)
     team.add(p3)
     team.add(p4)
-    team.check_fifa_rules(4).should eq true
+    team.check_fifa_rules_compliance.should eq true
+  end
+
+  it 'can only have four players in a team' do
+   team = Team.new("French")
+    p1 = Attacker.new("Tom", "French")
+    p2 = Attacker.new("Tom", "French")
+    p3 = Defender.new("Tom", "French")
+    p4 = Attacker.new("Tom", "Italian")
+    p5 = Attacker.new("Aouled", "Djibouti")
+    p6 = Attacker.new("Tom", "French")
+    team.add(p1)
+    team.add(p2)
+    team.add(p3)
+    team.add(p4)
+    team.add(p5)
+    expect {team.add(p6)}.to raise_error "The team is full"
+    # expect {team.add(p5).to_raise error}
+
+
+  end
+
+
+  it 'creates a model team with four players' do
+
+    TeamFactory.get_team.should eq "The team consists of Danny Shittu, Milan Fukal, Nicky Butt and Britain Chique Arce"
+    # TeamFactory.get_team.should eq nil
+
   end
 
 
